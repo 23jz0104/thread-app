@@ -12,7 +12,7 @@
 		<p>現在ログイン中のアカウント : ${user.email}</p>
 		
 		<!-- パスワード更新用フォーム -->
-		<form action="ChangeUserPassword" method="post">
+		<form action="ChangeUserPasswordServlet" method="post">
 			<label>
 				新しいパスワード : <input type="password" name="password">
 			</label>

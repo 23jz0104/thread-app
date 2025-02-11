@@ -104,7 +104,7 @@ public class ChangeUserPasswordServlet extends HttpServlet {
 
         if (Logic.hasEmptyValues(password, confirmPassword)) { //空文字判定
             request.setAttribute("message", "入力内容が不足しています。");
-            return "WEB-INF/jsp/changePassword.jsp";
+            return "WEB-INF/jsp/changeUserPassword.jsp";
         }
 
         if (password.equals(confirmPassword)) { //パスワードが一致していれば
@@ -120,12 +120,12 @@ public class ChangeUserPasswordServlet extends HttpServlet {
             }
             else {
                 request.setAttribute("message", "パスワードの更新に失敗しました。");
-                return "WEB-INF/jsp/changePassword";
+                return "WEB-INF/jsp/changeUserPassword.jsp";
             }
         }
         else {
             request.setAttribute("message", "パスワードが一致しません");
-            return "WEB-INF/jsp/changePassword";
+            return "WEB-INF/jsp/changeUserPassword.jsp";
         }
     }
 
