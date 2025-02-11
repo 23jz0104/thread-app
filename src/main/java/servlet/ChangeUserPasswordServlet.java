@@ -116,7 +116,7 @@ public class ChangeUserPasswordServlet extends HttpServlet {
             if (userDAO.updateUserPassword(userId, password)) { //パスワードの更新に成功したら
                 user = userDAO.getUserById(userId);
                 session.setAttribute("user", user);
-                return "WEB-INF/jsp/changePasswordComplete.jsp";
+                return "WEB-INF/jsp/changeUserPasswordComplete.jsp";
             }
             else {
                 request.setAttribute("message", "パスワードの更新に失敗しました。");
