@@ -1,2 +1,54 @@
 @charset "UTF-8";
 
+html {
+	font-size: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 3%;
+}
+
+.logo-container img{
+	height: 50px;
+	width: auto;
+}
+
+.navigation-container {
+	display: flex;
+}
+
+.navigation-container li {
+	padding-left: 20px;
+}
+
+main {
+	width: 80%;
+	margin :0 auto;
+	text-align: center;
+}
+
+
+.login-container {
+	padding: 5% 0;
+}
+
+.btn {
+	border: 1px solid;
+	border-radius: 10px;
+	padding: 20px;
+	color : lightseagreen;
+}
+
+
+
