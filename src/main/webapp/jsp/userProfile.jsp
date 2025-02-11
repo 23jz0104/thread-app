@@ -20,5 +20,6 @@
 		</p> 
 		<p>パスワード : ******** <a href="ChangeUserPasswordServlet">変更</a></p>
 		<a href="ThreadServlet">戻る</a>
+		<a href="LogoutServlet">ログアウト</a>
 	</body>
 </html>
