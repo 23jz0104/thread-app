@@ -102,7 +102,7 @@ public class UserDAO {
      * 
      * @param  id       ユーザーID
      * @param  password パスワード
-     * @return 見つかれば User / 見つからなければ null
+     * @return          見つかれば User / 見つからなければ null
      */
     public User getUserByIdAndPassword(int id, String password) {
         String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
@@ -237,6 +237,31 @@ public class UserDAO {
         }
         catch (SQLException e) {
             System.err.println("updateUserName(int id, String name)メソッドでエラー : " + e.getMessage());
+        }
+
+        return false;
+    }
+
+    /**
+     * ユーザーのパスワードを更新するメソッド
+     * 
+     * @param  id       ユーザーID
+     * @param  password 新しいパスワード
+     * @return          成功 true / 失敗 false
+     */
+    public boolean updateUserPassword(int id, String password) {
+        String sql    = "UPDATE users SET password = ? WHERE id = ?";
+        int    result = 0;
+
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, password);
+            stmt.setInt(2, id);
+
+            result = stmt.executeUpdate();
+            return result > 0;
+        }
+        catch (SQLException e) {
+            System.err.println("updateUserPassword(int id, String password)メソッドでエラー : " + e.getMessage());
         }
 
         return false;
