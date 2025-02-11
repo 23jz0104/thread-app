@@ -28,7 +28,7 @@ public class ChangeUserPasswordServlet extends HttpServlet {
 
         if (!Logic.isSessionActive(request)) { //セッションが存在するか判定
             url = "LoginServlet";
-            Logic.forward(request, response, url);
+            Logic.redirect(response, url);
             return;
         }
 
@@ -41,7 +41,7 @@ public class ChangeUserPasswordServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        String url;
+        String url = null;
 
         if (!Logic.isSessionActive(request)) { //セッションが存在するか判定
             url = "LoginServlet";
@@ -102,9 +102,9 @@ public class ChangeUserPasswordServlet extends HttpServlet {
         String password        = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
-        if (Logic.hasEmptyValues(password, confirmPassword)) {
+        if (Logic.hasEmptyValues(password, confirmPassword)) { //空文字判定
             request.setAttribute("message", "入力内容が不足しています。");
-            return "WEB-INF/jsp/changePassword";
+            return "WEB-INF/jsp/changePassword.jsp";
         }
 
         if (password.equals(confirmPassword)) { //パスワードが一致していれば
