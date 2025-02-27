@@ -1,8 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import dao.PostDAO;
+import dto.PostDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,6 +39,8 @@ public class PostCreateServlet extends HttpServlet {
 
         if (Logic.hasEmptyValues(user.getName())) { //アカウントに名前が未登録であればメッセージ表示
             request.setAttribute("message", "投稿するには<a href=\"RegisterUserServlet?action=registerUserName\">名前を登録</a>してください");
+            List<PostDTO> postDTOList = Logic.getAllPostDTOList();
+            request.setAttribute("postDTOList", postDTOList);
             url = "WEB-INF/jsp/home.jsp";
             Logic.forward(request, response, url);
             return;

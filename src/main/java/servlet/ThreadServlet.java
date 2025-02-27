@@ -1,11 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import dao.PostDAO;
-import dao.UserDAO;
 import dto.PostDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,8 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import logic.Logic;
-import model.Post;
-import model.User;
 
 /**
  * Servlet implementation class ThreadServlet
@@ -36,17 +31,7 @@ public class ThreadServlet extends HttpServlet {
             return;
         }
 
-        UserDAO       userDAO     = new UserDAO();
-        PostDAO       postDAO     = new PostDAO();
-        List<Post>    postList    = postDAO.getAllPostList();
-        List<PostDTO> postDTOList = new ArrayList<>();
-
-        for (Post post : postList) { //投稿の数だけDTOインスタンス作成
-            int  id   = post.getUserId();
-            User user = userDAO.getUserById(id);
-
-            postDTOList.add(new PostDTO(user, post));
-        }
+        List<PostDTO> postDTOList = Logic.getAllPostDTOList();
 
         request.setAttribute("postDTOList", postDTOList);
         url = "WEB-INF/jsp/home.jsp";

@@ -6,24 +6,25 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>掲示板アプリ | 編集</title>
+	<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<h1>投稿編集</h1>
-		<form action="PostEditServlet" method="post">
-			<label>
-				タイトル : <input type="text" name="title" value="${post.title}">
-			</label>
-			<label>
-				内容 : <textarea name="content">${post.content}</textarea>
-			</label>
+		<%@ include file="./header.jsp" %>
+		<div class="form-container">
+			<h1>投稿編集</h1>
+
+			<!-- 編集用フォーム -->
+			<form action="PostEditServlet" method="post" class="form">
+				<input type="text" name="title" value="${post.title}" placeholder="タイトルを入力">
+				<textarea name="content" placeholder="内容を入力">${post.content}</textarea>
+				<button type="submit" name="postId" value="${post.id}" class="btn">更新</button>
+			</form>
 			
-			<button type="submit" name="postId" value="${post.id}">更新</button>
-		</form>
-		
-		<c:if test="${not empty message}">
-			<p>${message}</p>
-		</c:if>
-		
-		<a href="ThreadServlet">戻る</a>
+			<c:if test="${not empty message}">
+				<p>${message}</p>
+			</c:if>
+			
+			<a href="ThreadServlet">戻る</a>
+		</div>
 	</body>
 </html>

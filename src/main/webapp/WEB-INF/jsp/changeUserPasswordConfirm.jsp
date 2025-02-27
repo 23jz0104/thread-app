@@ -6,25 +6,25 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>掲示板アプリ | パスワード変更</title>
+	<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<h1>パスワード変更</h1>
-		<p>ログイン中のアカウント : ${user.email}</p>
-		<p>現在のアカウントで使用しているパスワードを入力してください。</p>
-		
-		<!-- 現在使用中のパスワード確認フォーム -->
-		<form action="ChangeUserPasswordServlet" method="post">
-			<label>
-				パスワード入力 : <input type="password" name="password">
-			</label>
+		<%@ include file="./header.jsp" %>
+		<div class="form-container">
+			<h1>パスワード変更</h1>
+			<p>ログイン中のアカウント : ${user.email}</p>
 			
-			<button type="submit" name="action" value="passwordConfirm">確認</button>
-		</form>
-		
-		<c:if test="${not empty message}">
-			<p>${message}</p>
-		</c:if>
-		
-		<a href="UserProfileServlet">戻る</a>
+			<!-- 現在使用中のパスワード確認フォーム -->
+			<form action="ChangeUserPasswordServlet" method="post" class="form">
+				<input type="password" name="password" placeholder="現在のパスワードを入力">
+				<button type="submit" name="action" value="passwordConfirm" class="btn">確認</button>
+			</form>
+			
+			<c:if test="${not empty message}">
+				<p>${message}</p>
+			</c:if>
+			
+			<a href="UserProfileServlet">戻る</a>
+		</div>
 	</body>
 </html>

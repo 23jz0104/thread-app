@@ -6,23 +6,23 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>掲示板アプリ | ログイン</title>
+	<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<form action="LoginServlet" method="post">
-			<label>
-				メールアドレス : <input type="text" name="email">
-			</label>
-			<label>
-				パスワード : <input type="password" name="password">
-			</label>
+		<%@ include file="./header.jsp" %>
+		<div class="form-container">
+			<h1>ログイン</h1>
+			<form action="LoginServlet" method="post" class="form">
+				<input type="text" name="email" placeholder="メールアドレスを入力">
+				<input type="password" name="password" placeholder="パスワードを入力">
+				<button type="submit" class="btn">ログイン</button>
+			</form>
 			
-			<button type="submit">ログイン</button>
-		</form>
-		
-		<c:if test="${not empty message}">
-			<p>${message}</p>
-		</c:if>
-		
-		<a href="index.jsp">戻る</a>
+			<c:if test="${not empty message}">
+				<p>${message}</p>
+			</c:if>
+			
+			<a href="index.jsp">戻る</a>
+		</div>
 	</body>
 </html>

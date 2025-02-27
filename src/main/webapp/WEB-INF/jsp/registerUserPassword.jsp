@@ -6,23 +6,23 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>掲示板アプリ | アカウント作成</title>
+	<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<form action="RegisterUserServlet" method="post">
-			<label>
-				パスワード : <input type="password" name="password">
-			</label>
-			<label>
-				パスワード再確認 : <input type="password" name="confirmPassword">
-			</label>
+		<%@ include file="./header.jsp" %>
+		<div class="form-container">
+			<h1>アカウント作成</h1>
+			<form action="RegisterUserServlet" method="post" class="form">
+				<input type="password" name="password" placeholder="パスワードを入力">
+				<input type="password" name="confirmPassword" placeholder="確認用パスワードを入力">
+				<button type="submit" name="action" value="register" class="btn">登録</button>
+			</form>
 			
-			<button type="submit" name="action" value="register">登録</button>
-		</form>
-		
-		<a href="RegisterUserServlet">戻る</a>
-		
-		<c:if test="${not empty message}">
-			<p style="color : red">${message}</p>
-		</c:if>
+			<a href="RegisterUserServlet">戻る</a>
+			
+			<c:if test="${not empty message}">
+				<p style="color : red">${message}</p>
+			</c:if>
+		</div>
 	</body>
 </html>

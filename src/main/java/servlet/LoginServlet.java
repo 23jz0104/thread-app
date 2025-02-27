@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         if (Logic.hasEmptyValues(email, password)) {
+            request.setAttribute("message", "入力内容が不足しています。");
             url = "WEB-INF/jsp/userLogin.jsp";
             Logic.forward(request, response, url);
             return;
@@ -56,6 +57,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("message", "メールアドレスアドレスの形式が不正です。");
             url = "WEB-INF/jsp/userLogin.jsp";
             Logic.forward(request, response, url);
+            return;
         }
 
         UserDAO userDAO = new UserDAO();

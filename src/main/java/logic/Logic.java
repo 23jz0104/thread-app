@@ -1,12 +1,18 @@
 package logic;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dao.PostDAO;
+import dao.UserDAO;
+import dto.PostDTO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Post;
 import model.User;
 
 public class Logic {
@@ -52,6 +58,27 @@ public class Logic {
         String emailFormat = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
 
         return email.matches(emailFormat);
+    }
+
+    /**
+     * すべての投稿をList<PostDTO>形式で取得
+     * 
+     * @return すべてのPostDTOList
+     */
+    public static List<PostDTO> getAllPostDTOList() {
+        UserDAO       userDAO     = new UserDAO();
+        PostDAO       postDAO     = new PostDAO();
+        List<Post>    postList    = postDAO.getAllPostList();
+        List<PostDTO> postDTOList = new ArrayList<>();
+
+        for (Post post : postList) { //投稿の数だけDTOインスタンス作成
+            int  id   = post.getUserId();
+            User user = userDAO.getUserById(id);
+
+            postDTOList.add(new PostDTO(user, post));
+        }
+
+        return postDTOList;
     }
 
     /**

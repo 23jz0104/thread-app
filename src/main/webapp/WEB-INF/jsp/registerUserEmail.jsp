@@ -6,20 +6,22 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>掲示板アプリ | アカウント作成</title>
+	<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<form action="RegisterUserServlet" method="post">
-			<label>
-				メールアドレス : <input type="text" name="email">
-			</label>
+		<%@ include file="./header.jsp" %>
+		<div class="form-container">
+			<h1>アカウント作成</h1>
+			<form action="RegisterUserServlet" method="post" class="form">
+				<input type="text" name="email" placeholder="メールアドレスを入力">
+				<button type="submit" name="action" value="continue" class="btn">続ける</button>
+			</form>
 			
-			<button type="submit" name="action" value="continue">続ける</button>
-		</form>
-		
-		<a href="index.jsp">戻る</a>
-		
-		<c:if test="${not empty message}">
-			<p style="color : red">${message}</p>
-		</c:if>
+			<a href="index.jsp">戻る</a>
+			
+			<c:if test="${not empty message}">
+				<p style="color : red">${message}</p>
+			</c:if>
+		</div>
 	</body>
 </html>
