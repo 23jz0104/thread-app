@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Post implements Serializable {
 
@@ -13,7 +14,7 @@ public class Post implements Serializable {
     private LocalDateTime updatedDate;
 
     public Post() {
-        
+
     }
 
     public Post(int id, int userId, String title, String content, LocalDateTime createdDate, LocalDateTime updatedDate) {
@@ -79,6 +80,8 @@ public class Post implements Serializable {
         return "Post [id=" + id + ", userId=" + userId + ", title=" + title + ", content=" + content + ", createdDate=" + createdDate
                 + ", updatedDate=" + updatedDate + "]";
     }
-    
-    
+
+    public String getFormattedDateTime(LocalDateTime localDateTime) {
+        return localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
+    }
 }

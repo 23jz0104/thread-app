@@ -72,10 +72,11 @@ public class Logic {
         List<PostDTO> postDTOList = new ArrayList<>();
 
         for (Post post : postList) { //投稿の数だけDTOインスタンス作成
-            int  id   = post.getUserId();
-            User user = userDAO.getUserById(id);
+            int    id              = post.getUserId();
+            User   user            = userDAO.getUserById(id);
+            String createdDateTime = post.getFormattedDateTime(post.getCreatedDate());
 
-            postDTOList.add(new PostDTO(user, post));
+            postDTOList.add(new PostDTO(user, post, createdDateTime));
         }
 
         return postDTOList;

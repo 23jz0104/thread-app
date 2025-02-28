@@ -9,8 +9,9 @@ import model.User;
  * 投稿表示用DTO
  */
 public class PostDTO implements Serializable {
-    private User user;
-    private Post post;
+    private User   user;
+    private Post   post;
+    private String createdDateTime;
 
     /**
      * コンストラクタ
@@ -19,9 +20,10 @@ public class PostDTO implements Serializable {
 
     }
 
-    public PostDTO(User user, Post post) {
-        this.user = user;
-        this.post = post;
+    public PostDTO(User user, Post post, String createdDateTime) {
+        this.user            = user;
+        this.post            = post;
+        this.createdDateTime = createdDateTime;
     }
 
     public User getUser() {
@@ -38,6 +40,14 @@ public class PostDTO implements Serializable {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public String getCreatedDateTime() {
+        return createdDateTime;
+    }
+
+    public void setCreatedDateTime(String createdDateTime) {
+        this.createdDateTime = createdDateTime;
     }
 
 }

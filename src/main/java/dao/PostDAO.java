@@ -57,7 +57,7 @@ public class PostDAO {
      */
     public List<Post> getAllPostList() {
         List<Post> postList = new ArrayList<>();
-        String     sql      = "SELECT * FROM posts ORDER BY created_date";
+        String     sql      = "SELECT * FROM posts ORDER BY created_date DESC";
 
         try (PreparedStatement stmt = con.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery()) {
@@ -138,8 +138,8 @@ public class PostDAO {
 
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
-                result = stmt.executeUpdate();
-                return result > 0;
+            result = stmt.executeUpdate();
+            return result > 0;
         }
         catch (SQLException e) {
             System.err.println("deletePostById(int id)でエラー : " + e.getMessage());

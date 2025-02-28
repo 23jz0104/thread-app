@@ -5,6 +5,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>掲示板アプリ | ホーム</title>
 	<link rel="stylesheet" href="css/style.css">
 	</head>
@@ -25,26 +26,29 @@
 					<li>
 						<div class="post"> <!-- タイトルと投稿者 -->
 							<div class="post-info">
-								<p>${postDTO.post.createdDate}</p>
-								<p>投稿者 : ${postDTO.user.name}</p>
+								<p>${postDTO.createdDateTime}</p>
+								<p>投稿者 : <span class="${postDTO.post.userId eq user.id ? 'owner-content' : ''}">${postDTO.user.name}</span></p>
 							</div>
 							
-							<div class="post-content">
-								<div class="post-detail">
-									<h3 class="post-title">${postDTO.post.title}</h3>
-									<p>${postDTO.post.content}</p>
+							<div class="post-content-container"> 
+								<div class="post-content">
+									<div class="post-tilte-container">
+										<h3 class="post-title">${postDTO.post.title}</h3>
+									</div>
+
+									<div class="post-edit">
+										<c:if test="${postDTO.post.userId eq user.id}">
+											<form action="PostEditServlet" method="get">
+												<button type="submit" name="postId" value="${postDTO.post.id}" class="btn">編集</button>
+											</form>
+											<form action="PostDeleteServlet" method="post">
+												<button type="submit" name="postId" value="${postDTO.post.id}" class="btn delete-button">削除</button>
+											</form>
+										</c:if>
+									</div>
 								</div>
-								
-								<div class="post-edit">
-									<!-- 投稿されたユーザーIDとログイン中のユーザーIDが一致していれば -->
-									<c:if test="${postDTO.post.userId eq user.id}">
-										<form action="PostEditServlet" method="get">
-											<button type="submit" name="postId" value="${postDTO.post.id}" class="btn">編集</button>
-										</form>
-										<form action="PostDeleteServlet" method="post">
-											<button type="submit" name="postId" value="${postDTO.post.id}" class="btn delete-button">削除</button>
-										</form>
-									</c:if>
+								<div class="post-text">
+									<p><c:out value="${postDTO.post.content}" /></p>
 								</div>
 							</div>
 						</div>

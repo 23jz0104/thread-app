@@ -5,13 +5,16 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Insert title here</title>
 	</head>
 	<body>
 		<c:if test="${empty user}">
 			<header class="header">
 				<div class="header-inner">
-					<h1 class="title-logo">thread-app</h1>
+					<div class="logo-container">
+						<img src="img/thread-app-logo.png">
+					</div>
 	
 					<nav class="gnav">
 						<ul class="gnav-list">
@@ -25,11 +28,12 @@
 		<c:if test="${not empty user}">
 			<header class="header">
 				<div class="header-inner">
-					<h1 class="title-logo">thread-app</h1>
+					<div class="logo-container">
+						<img src="img/thread-app-logo.png">
+					</div>
 	
 					<nav class="gnav">
 						<ul class="gnav-list">
-							<li>${user.email}でログインしています</li>
 							<li><a href="UserProfileServlet">マイページ</a></li>
 							<li><a href="LogoutServlet">ログアウト</a></li>
 						</ul>
