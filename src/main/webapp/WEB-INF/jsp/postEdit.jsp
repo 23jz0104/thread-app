@@ -16,16 +16,15 @@
 
 			<!-- 編集用フォーム -->
 			<form action="PostEditServlet" method="post" class="form">
-				<input type="text" name="title" value="${post.title}" placeholder="タイトルを入力">
-				<textarea name="content" placeholder="内容を入力">${post.content}</textarea>
-				<button type="submit" name="postId" value="${post.id}" class="btn">更新</button>
+				<input type="text" name="title" value="${not empty post.title ? post.title : title}" placeholder="タイトルを入力">
+				<textarea name="content" placeholder="内容を入力">${not empty post.content ? post.content : content}</textarea>
+				<button type="submit" name="postId" value="${not empty post.id ? post.id : postId}" class="btn">更新</button>
 			</form>
 			
-			<c:if test="${not empty message}">
-				<p>${message}</p>
-			</c:if>
-			
 			<a href="ThreadServlet">戻る</a>
+			<c:if test="${not empty message}">
+				<p class="error-message">${message}</p>
+			</c:if>
 		</div>
 	</body>
 </html>

@@ -16,7 +16,7 @@
 				<a href="PostCreateServlet" class="post-create-btn">投稿する</a>
 				
 				<c:if test="${not empty message}">
-					<p>${message}</p>
+					<p class="error-message">${message}</p>
 				</c:if>
 			</div>
 			

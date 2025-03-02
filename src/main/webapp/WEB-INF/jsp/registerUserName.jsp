@@ -21,7 +21,7 @@
 			</form>
 			
 			<c:if test="${not empty message}">
-				<p>${message}</p>
+				<p class="error-message">${message}</p>
 			</c:if>
 			
 			<a href="ThreadServlet">戻る</a>

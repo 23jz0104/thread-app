@@ -17,5 +17,5 @@
 			
 			<a href="UserProfileServlet">戻る</a>	
 		</div>
-		</body>
+	</body>
 </html>

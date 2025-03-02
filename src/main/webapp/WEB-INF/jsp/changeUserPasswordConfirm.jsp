@@ -21,11 +21,11 @@
 				<button type="submit" name="action" value="passwordConfirm" class="btn">確認</button>
 			</form>
 			
-			<c:if test="${not empty message}">
-				<p>${message}</p>
-			</c:if>
-			
 			<a href="UserProfileServlet">戻る</a>
+
+			<c:if test="${not empty message}">
+				<p  class="error-message">${message}</p>
+			</c:if>
 		</div>
 	</body>
 </html>

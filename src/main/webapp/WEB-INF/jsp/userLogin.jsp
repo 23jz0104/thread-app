@@ -19,11 +19,11 @@
 				<button type="submit" class="btn">ログイン</button>
 			</form>
 			
-			<c:if test="${not empty message}">
-				<p>${message}</p>
-			</c:if>
-			
 			<a href="index.jsp">戻る</a>
+
+			<c:if test="${not empty message}">
+				<p class="error-message">${message}</p>
+			</c:if>
 		</div>
 	</body>
 </html>

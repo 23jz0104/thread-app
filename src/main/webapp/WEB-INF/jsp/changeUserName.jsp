@@ -24,11 +24,12 @@
 				<button type="submit" class="btn">変更</button>
 			</form>
 			
+			<a href="UserProfileServlet">戻る</a>
+
 			<c:if test="${not empty message}">
-				<p>${message}</p>
+				<p class="error-message">${message}</p>
 			</c:if>
 			
-			<a href="UserProfileServlet">戻る</a>
 		</div>
 	</body>
 </html>

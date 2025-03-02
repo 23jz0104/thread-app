@@ -73,19 +73,6 @@ public class PostEditServlet extends HttpServlet {
             return;
         }
 
-        String title   = request.getParameter("title");
-        String content = request.getParameter("content");
-
-        if (Logic.hasEmptyValues(title, content)) { //空文字判定
-            request.setAttribute("title", title);
-            request.setAttribute("content", content);
-            request.setAttribute("message", "入力内容に不備ああります。");
-
-            url = "WEB-INF/jsp/postEdit.jsp";
-            Logic.forward(request, response, url);
-            return;
-        }
-
         int postId = 0;
 
         try {
@@ -99,6 +86,20 @@ public class PostEditServlet extends HttpServlet {
         }
 
         PostDAO postDAO = new PostDAO();
+
+        String  title   = request.getParameter("title");
+        String  content = request.getParameter("content");
+
+        if (Logic.hasEmptyValues(title, content)) { //空文字判定
+            request.setAttribute("title", title);
+            request.setAttribute("content", content);
+            request.setAttribute("postId", postId);
+            request.setAttribute("message", "入力内容に不備があります。");
+
+            url = "WEB-INF/jsp/postEdit.jsp";
+            Logic.forward(request, response, url);
+            return;
+        }
 
         if (postDAO.updatePost(postId, title, content)) { //更新が成功すればリダイレクト
             url = "ThreadServlet";

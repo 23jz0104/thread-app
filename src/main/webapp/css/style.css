@@ -16,6 +16,10 @@ a:hover {
 	color: #75A9FF
 }
 
+.error-message {
+	color: red;
+}
+
 .btn {
 	background-color: #2C7CFF;
 	color: white;
@@ -58,9 +62,14 @@ li {
 }
 
 .form-container {
-	max-width: 20%;
+	max-width: 30%;
 	margin: 50px auto;
 	text-align: center;
+}
+
+.form-container h1 {
+	font-size: 45px;
+	margin-bottom: 20px;
 }
 
 .form-container p {

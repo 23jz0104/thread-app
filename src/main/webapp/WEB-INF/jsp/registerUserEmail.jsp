@@ -21,7 +21,7 @@
 			<a href="index.jsp">戻る</a>
 			
 			<c:if test="${not empty message}">
-				<p style="color : red">${message}</p>
+				<p class="error-message">${message}</p>
 			</c:if>
 		</div>
 	</body>
